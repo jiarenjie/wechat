@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiarj.mapper.WechatMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.jiarj.entity.WechatMsg" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="to_user_name" property="toUserName" jdbcType="VARCHAR" />
+    <result column="from_user_name" property="fromUserName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="msg_type" property="msgType" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="msgId" property="msgid" jdbcType="VARCHAR" />
+    <result column="picUrl" property="picurl" jdbcType="VARCHAR" />
+    <result column="mediaId" property="mediaid" jdbcType="VARCHAR" />
+    <result column="format" property="format" jdbcType="VARCHAR" />
+    <result column="recognition" property="recognition" jdbcType="VARCHAR" />
+    <result column="thumb_mediaId" property="thumbMediaid" jdbcType="VARCHAR" />
+    <result column="locationX" property="locationx" jdbcType="VARCHAR" />
+    <result column="locationY" property="locationy" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="VARCHAR" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="event" property="event" jdbcType="VARCHAR" />
+    <result column="event_key" property="eventKey" jdbcType="VARCHAR" />
+    <result column="ticket" property="ticket" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="precision" property="precision" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wechat_msg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiarj.entity.WechatMsg" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wechat_msg (to_user_name, from_user_name, create_time, 
+      msg_type, content, msgId, 
+      picUrl, mediaId, format, 
+      recognition, thumb_mediaId, locationX, 
+      locationY, `scale`, `label`, 
+      title, description, url, 
+      event, event_key, ticket, 
+      latitude, longitude, `precision`
+      )
+    values (#{toUserName,jdbcType=VARCHAR}, #{fromUserName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{msgType,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{msgid,jdbcType=VARCHAR}, 
+      #{picurl,jdbcType=VARCHAR}, #{mediaid,jdbcType=VARCHAR}, #{format,jdbcType=VARCHAR}, 
+      #{recognition,jdbcType=VARCHAR}, #{thumbMediaid,jdbcType=VARCHAR}, #{locationx,jdbcType=VARCHAR}, 
+      #{locationy,jdbcType=VARCHAR}, #{scale,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{event,jdbcType=VARCHAR}, #{eventKey,jdbcType=VARCHAR}, #{ticket,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{precision,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jiarj.entity.WechatMsg" >
+    update wechat_msg
+    set to_user_name = #{toUserName,jdbcType=VARCHAR},
+      from_user_name = #{fromUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      msg_type = #{msgType,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      msgId = #{msgid,jdbcType=VARCHAR},
+      picUrl = #{picurl,jdbcType=VARCHAR},
+      mediaId = #{mediaid,jdbcType=VARCHAR},
+      format = #{format,jdbcType=VARCHAR},
+      recognition = #{recognition,jdbcType=VARCHAR},
+      thumb_mediaId = #{thumbMediaid,jdbcType=VARCHAR},
+      locationX = #{locationx,jdbcType=VARCHAR},
+      locationY = #{locationy,jdbcType=VARCHAR},
+      `scale` = #{scale,jdbcType=VARCHAR},
+      `label` = #{label,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      event = #{event,jdbcType=VARCHAR},
+      event_key = #{eventKey,jdbcType=VARCHAR},
+      ticket = #{ticket,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      `precision` = #{precision,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, to_user_name, from_user_name, create_time, msg_type, content, msgId, picUrl, 
+    mediaId, format, recognition, thumb_mediaId, locationX, locationY, `scale`, `label`, 
+    title, description, url, event, event_key, ticket, latitude, longitude, `precision`
+    from wechat_msg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, to_user_name, from_user_name, create_time, msg_type, content, msgId, picUrl, 
+    mediaId, format, recognition, thumb_mediaId, locationX, locationY, `scale`, `label`, 
+    title, description, url, event, event_key, ticket, latitude, longitude, `precision`
+    from wechat_msg
+  </select>
+</mapper>
